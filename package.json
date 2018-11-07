@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/AssimilationSquad/YJ-proxy#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "http-proxy": "^1.17.0"
   },
   "proxy": "http://localhost:3000",
   "devDependencies": {
