@@ -9,11 +9,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
-// app.get('rooms/:homeid', (req, res) => {
-//   res.sendFile(path.join(__dirname, )) //what are we path.joining with?
-// })
+app.get('/rooms/:homeid', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+})
 
-// app.
+app.get('rooms/:homeid/reviews', (req, res) => {
+  console.log("Getting a request for the reviews");
+  res.status(200);
+})
 
 app.listen(port, () => {
   console.log(`Server listening at: http://localhost:${port}`)
