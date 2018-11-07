@@ -20,10 +20,7 @@ app.get('/rooms/:homeid', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 
-// app.get('rooms/:homeid/reviews', (req, res) => {
-//   console.log("Getting a request for the reviews");
-//   res.status(200);
-// })
+app.all('')
 
 app.all('/rooms/:homeid/reviews', (req, res) => {
   console.log("redirecting to Reviews server");
