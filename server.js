@@ -20,11 +20,24 @@ app.get('/rooms/:homeid', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 
-app.all('')
+app.all('/similar/rooms/:id', (req, res) => {
+  console.log("redirecting to Similar server");
+  apiProxy.web(req, res, {target: similarServer});
+})
 
 app.all('/rooms/:homeid/reviews', (req, res) => {
   console.log("redirecting to Reviews server");
   apiProxy.web(req, res, {target: reviewsServer});
+});
+
+app.all('/api/rooms/:id', (req, res) => {
+  console.log("redirecting to Grid server");
+  apiProxy.web(req, res, {target: gridServer});
+});
+
+app.all('/rooms/:homeid/reviews', (req, res) => {
+  console.log("redirecting to Booking server");
+  apiProxy.web(req, res, {target: bookServer});
 });
 
 app.listen(port, () => {
