@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 const path = require('path');
 const httpProxy = require('http-proxy');
 const apiProxy = httpProxy.createProxyServer();
 
-const bookServer = 'http://localhost:3001';
-const reviewsServer = 'http://localhost:3002';
-const similarServer = 'http://localhost:3003';
-const gridServer = 'http://localhost:3004';
+const bookServer = 'http://54.200.6.195';
+const reviewsServer = 'http://18.144.35.212';
+const similarServer = 'http://ec2-52-53-209-206.us-west-1.compute.amazonaws.com';
+const gridServer = 'http://ec2-18-188-150-95.us-east-2.compute.amazonaws.com';
 
 const bodyParser = require('body-parser');
 
@@ -35,7 +35,7 @@ app.all('/api/rooms/:id', (req, res) => {
   apiProxy.web(req, res, {target: gridServer});
 });
 
-app.all('/rooms/:homeid/reviews', (req, res) => {
+app.all('/price/:roomid', (req, res) => {
   console.log("redirecting to Booking server");
   apiProxy.web(req, res, {target: bookServer});
 });
