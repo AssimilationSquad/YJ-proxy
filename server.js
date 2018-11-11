@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const path = require('path');
+const compression = require('compression');
 const httpProxy = require('http-proxy');
 const apiProxy = httpProxy.createProxyServer();
 
@@ -15,6 +16,7 @@ const bodyParser = require('body-parser');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(compression());
 
 app.get('/rooms/:homeid', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
